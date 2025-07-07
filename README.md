@@ -52,7 +52,7 @@ git clone https://github.com/seu-usuario/freeflow-pm.git
 ## 🧼 Iniciativa: "Limpeza de Warnings"
 Uma das nossas primeiras missões é limpar os warnings apontados pelo IntelliJ, sem alterar o comportamento da aplicação.
 
-🎯 Veja a lista de issues: Acesse as issues abertas ›
+🎯 Veja a lista de issues: [Acesse as issues abertas ›](https://github.com/igorcarvalhh/freeflow/issues)
 
 🛠️ Você pode contribuir resolvendo uma delas ou sugerindo novas!
 
