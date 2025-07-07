@@ -4,6 +4,12 @@
 
 Nosso foco inicial está em **limpar o código**, **resolver warnings**, **melhorar a legibilidade** e tornar o projeto mais acessível para desenvolvedores que desejam aprender, contribuir ou criar suas próprias versões. A longo prazo, buscamos evoluir a interface, melhorar a experiência do usuário e trazer novas funcionalidades.
 
+## 🌐 Página Oficial do Projeto
+
+🔗 Acompanhe a documentação, visão do produto, roadmap e progresso do Freeflow PM diretamente pelo Notion:
+
+👉 **[Clique aqui para acessar a página oficial do projeto no Notion ›](https://psychedelic-spaghetti-629.notion.site/Freeflow-PM-228f57830d6c8087a227ce642b929ac1)**
+
 ## 🚀 Principais objetivos
 
 - ✅ Eliminar a maior parte dos warnings da base original
