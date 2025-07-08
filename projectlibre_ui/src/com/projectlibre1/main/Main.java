@@ -89,7 +89,7 @@ public class Main {
 			for (int i=0;i<args.length;i++){
 				if (args[i]!=null&& args[i].length()>0) nonEmptyArgs.add(args[i]);
 			}
-			if (nonEmptyArgs.size()>0){
+			if (!nonEmptyArgs.isEmpty()){
 				ArrayList<String> formatedList=new ArrayList<String>();
 				String s1,s2;
 				for (Iterator<String> i=nonEmptyArgs.iterator();i.hasNext();){
