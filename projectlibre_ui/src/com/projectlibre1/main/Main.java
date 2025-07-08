@@ -79,12 +79,12 @@ public class Main {
 		Environment.setStandAlone(true);
 		String[] formatedArgs;
 		if (args!=null && args.length>0){
-			ArrayList<String> nonEmptyArgs=new ArrayList<String>(args.length);
-			for (int i=0;i<args.length;i++){
-				if (args[i]!=null&& args[i].length()>0) nonEmptyArgs.add(args[i]);
-			}
+			ArrayList<String> nonEmptyArgs=new ArrayList<>(args.length);
+            for (String arg : args) {
+                if (arg != null && !arg.isEmpty()) nonEmptyArgs.add(arg);
+            }
 			if (!nonEmptyArgs.isEmpty()){
-				ArrayList<String> formatedList=new ArrayList<String>();
+				ArrayList<String> formatedList=new ArrayList<>();
 				String s1,s2;
 				for (Iterator<String> i=nonEmptyArgs.iterator();i.hasNext();){
 					s1=i.next();
