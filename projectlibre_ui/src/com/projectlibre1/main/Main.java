@@ -20,38 +20,38 @@
  * Alternatively, the contents of this file may be used under the terms of the 
  * ProjectLibre End-User License Agreement (the ProjectLibre License) in which case 
  * the provisions of the ProjectLibre License are applicable instead of those above. 
- * If you wish to allow use of your version of this file only under the terms of the 
+ * If you wish to allow use of your version of this file only under the terms of the
  * ProjectLibre License and not to allow others to use your version of this file 
  * under the CPAL, indicate your decision by deleting the provisions above and 
  * replace them with the notice and other provisions required by the ProjectLibre 
  * License. If you do not delete the provisions above, a recipient may use your 
- * version of this file under either the CPAL or the ProjectLibre Licenses. 
+ * version of this file under either the CPAL or the ProjectLibre Licenses.
  *
  *
- * [NOTE: The text of this Exhibit A may differ slightly from the text of the notices 
- * in the Source Code files of the Original Code. You should use the text of this 
- * Exhibit A rather than the text found in the Original Code Source Code for Your 
- * Modifications.] 
+ * [NOTE: The text of this Exhibit A may differ slightly from the text of the notices
+ * in the Source Code files of the Original Code. You should use the text of this
+ * Exhibit A rather than the text found in the Original Code Source Code for Your
+ * Modifications.]
  *
  * EXHIBIT B. Attribution Information for ProjectLibre required
  *
  * Attribution Copyright Notice: Copyright (c) 2012-2019, ProjectLibre, Inc.
- * Attribution Phrase (not exceeding 10 words): 
+ * Attribution Phrase (not exceeding 10 words):
  * ProjectLibre, open source project management software.
  * Attribution URL: http://www.projectlibre.com
- * Graphic Image as provided in the Covered Code as file: projectlibre-logo.png with 
- * alternatives listed on http://www.projectlibre.com/logo 
+ * Graphic Image as provided in the Covered Code as file: projectlibre-logo.png with
+ * alternatives listed on http://www.projectlibre.com/logo
  *
- * Display of Attribution Information is required in Larger Works which are defined 
- * in the CPAL as a work which combines Covered Code or portions thereof with code 
- * not governed by the terms of the CPAL. However, in addition to the other notice 
- * obligations, all copies of the Covered Code in Executable and Source Code form 
- * distributed must, as a form of attribution of the original author, include on 
- * each user interface screen the "ProjectLibre" logo visible to all users. 
- * The ProjectLibre logo should be located horizontally aligned with the menu bar 
- * and left justified on the top left of the screen adjacent to the File menu. The 
- * logo must be at least 144 x 31 pixels. When users click on the "ProjectLibre" 
- * logo it must direct them back to http://www.projectlibre.com. 
+ * Display of Attribution Information is required in Larger Works which are defined
+ * in the CPAL as a work which combines Covered Code or portions thereof with code
+ * not governed by the terms of the CPAL. However, in addition to the other notice
+ * obligations, all copies of the Covered Code in Executable and Source Code form
+ * distributed must, as a form of attribution of the original author, include on
+ * each user interface screen the "ProjectLibre" logo visible to all users.
+ * The ProjectLibre logo should be located horizontally aligned with the menu bar
+ * and left justified on the top left of the screen adjacent to the File menu. The
+ * logo must be at least 144 x 31 pixels. When users click on the "ProjectLibre"
+ * logo it must direct them back to http://www.projectlibre.com.
  *******************************************************************************/
 package com.projectlibre1.main;
 
@@ -65,10 +65,6 @@ import com.projectlibre1.dialog.UserInfoDialog;
 import com.projectlibre1.strings.Messages;
 import com.projectlibre1.util.Environment;
 
-
-/**
- *
- */
 public class Main {
 	public static void main(String[] args) {
 		int runNumber=getRunNumber()+1;
@@ -80,8 +76,6 @@ public class Main {
 		System.setProperty("projectlibre.projectLibreRunNumber", getProjectLibreRunNumber()+"");
 		System.setProperty("projectlibre.projectLibreFirstRun", getProjectLibreFirstRun()+"");
 		
-//		System.setProperty("file.encoding", "UTF-8");
-
 		Environment.setStandAlone(true);
 		String[] formatedArgs;
 		if (args!=null && args.length>0){
