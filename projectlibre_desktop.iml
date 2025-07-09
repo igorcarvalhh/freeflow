@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/projectlibre_exchange/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/projectlibre_reports/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/projectlibre_ui/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/projectlibre_ui/test" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -96,5 +97,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" scope="TEST" name="junit.jupiter.api" level="project" />
   </component>
 </module>
