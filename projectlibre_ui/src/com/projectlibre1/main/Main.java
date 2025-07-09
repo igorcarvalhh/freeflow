@@ -60,7 +60,7 @@ public class Main {
 		return Preferences.userNodeForPackage(Main.class).getLong("firstRun",System.currentTimeMillis());
 	}
 	public static String getRunSinceMessage() {
-		return MessageFormat.format(Messages.getString("Text.runsSinceMessage"),new Object[] {getRunNumber(),new Date(getFirstRun())});
+		return MessageFormat.format(Messages.getString("Text.runsSinceMessage"), getRunNumber(), new Date(getFirstRun()));
 	}
 
 }
