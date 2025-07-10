@@ -86,7 +86,7 @@ public final class DonateDialog extends AbstractDialog {
 	private boolean showRunsSince;
 
 	public static void maybeShow(Frame owner,boolean force) {
-		int runNumber = Main.getRunNumber();
+		int runNumber = Main.getStoredRunNumber();
 		boolean periodic = false;
 		boolean show=false;
 		String[] runs = Messages.getString("DonateDialog.show").split(",");

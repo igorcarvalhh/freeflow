@@ -11,16 +11,15 @@ import com.projectlibre1.util.Environment;
 
 public class Main {
 	public static void main(String[] args) {
-		int runNumber=getRunNumber()+1;
-		long firstRun=getFirstRun();
-		Preferences.userNodeForPackage(Main.class).putInt("projectlibreRunNumber",runNumber);
-		Preferences.userNodeForPackage(Main.class).putLong("projectlibrefirstRun",firstRun);		
-		System.setProperty("projectlibre.runNumber", runNumber+"");
-		System.setProperty("projectlibre.firstRun", firstRun+"");
-		System.setProperty("projectlibre.projectLibreRunNumber", getProjectLibreRunNumber()+"");
-		System.setProperty("projectlibre.projectLibreFirstRun", getProjectLibreFirstRun()+"");
+		int runNumber = getStoredRunNumber() + 1;
+		long firstRun = getStoredRunNumber();
+
+		storeRunInfo(runNumber, firstRun);
+		setSystemProperties(runNumber, firstRun);
 		
 		Environment.setStandAlone(true);
+
+		// TODO Extract to a function
 		String[] formatedArgs;
 		if (args!=null && args.length>0){
 			ArrayList<String> nonEmptyArgs=new ArrayList<>(args.length);
@@ -47,20 +46,42 @@ public class Main {
 
 		com.projectlibre1.pm.graphic.gantt.Main.main(formatedArgs);
 	}
-	public static int getRunNumber() {
-		return Preferences.userNodeForPackage(Main.class).getInt("projectlibreRunNumber",0);
+
+	public static Preferences getUserPreferences() {
+		return Preferences.userNodeForPackage(Main.class);
 	}
-	public static long getFirstRun() {
-		return Preferences.userNodeForPackage(Main.class).getLong("projectlibreFirstRun",System.currentTimeMillis());
+
+	public static void storeRunInfo(int runNumber, long firstRun) {
+		Preferences usrPrefs = getUserPreferences();
+		usrPrefs.putInt("projectlibreRunNumber", runNumber);
+		usrPrefs.putLong("projectlibrefirstRun", firstRun);
+	}
+
+	public static void setSystemProperties(int runNumber, long firstRun) {
+		System.setProperty("projectlibre.runNumber", String.valueOf(runNumber));
+		System.setProperty("projectlibre.firstRun", String.valueOf(firstRun));
+		System.setProperty("projectlibre.projectLibreRunNumber", String.valueOf(getProjectLibreRunNumber()));
+		System.setProperty("projectlibre.projectLibreFirstRun", String.valueOf(getProjectLibreFirstRun()));
+	}
+
+	public static int getStoredRunNumber() {
+		return getUserPreferences().getInt("runNumber", 0);
+	}
+	public static long getStoredFirstRun() {
+		return getUserPreferences().getLong("firstRun", System.currentTimeMillis());
 	}
 	public static int getProjectLibreRunNumber() {
-		return Preferences.userNodeForPackage(Main.class).getInt("runNumber",0);
+		return getUserPreferences().getInt("projectLibreRunNumber", 0);
 	}
 	public static long getProjectLibreFirstRun() {
-		return Preferences.userNodeForPackage(Main.class).getLong("firstRun",System.currentTimeMillis());
+		return getUserPreferences().getLong("projectLibreFirstRun", System.currentTimeMillis());
 	}
 	public static String getRunSinceMessage() {
-		return MessageFormat.format(Messages.getString("Text.runsSinceMessage"), getRunNumber(), new Date(getFirstRun()));
+		return MessageFormat.format(
+				Messages.getString("Text.runsSinceMessage"),
+				getStoredRunNumber(),
+				new Date(getStoredFirstRun())
+		);
 	}
 
 }
