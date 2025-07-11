@@ -67,15 +67,19 @@ public class Main {
 	public static int getStoredRunNumber() {
 		return getUserPreferences().getInt("runNumber", 0);
 	}
+
 	public static long getStoredFirstRun() {
 		return getUserPreferences().getLong("firstRun", System.currentTimeMillis());
 	}
+
 	public static int getProjectLibreRunNumber() {
 		return getUserPreferences().getInt("projectLibreRunNumber", 0);
 	}
+
 	public static long getProjectLibreFirstRun() {
 		return getUserPreferences().getLong("projectLibreFirstRun", System.currentTimeMillis());
 	}
+
 	public static String getRunSinceMessage() {
 		return MessageFormat.format(
 				Messages.getString("Text.runsSinceMessage"),
