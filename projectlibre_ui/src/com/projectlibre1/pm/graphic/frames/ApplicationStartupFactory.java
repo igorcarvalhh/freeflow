@@ -74,13 +74,9 @@ import com.projectlibre1.util.FontUtil;
 
 public class ApplicationStartupFactory extends StartupFactory {
 
-	public ApplicationStartupFactory(String args[]){
-		this(ApplicationStartupFactory.extractOpts(args));
-	}
-	public ApplicationStartupFactory(HashMap opts) {
-		try{
-			Class.forName("java.net.CookieHandler").getMethod("setDefault",new Class[]{CookieHandler.class}).invoke(null,new Object[]{null});
-		}catch(Exception e){}
+	public ApplicationStartupFactory(Map<String, Object> opts) {
+
+		CookieUtils.disableCookieHandler();
 
 		this.opts=opts;
 		dumpOpts();
