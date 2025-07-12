@@ -60,6 +60,7 @@ import com.projectlibre1.pm.graphic.frames.ApplicationStartupFactory;
 import com.projectlibre1.pm.graphic.frames.GraphicManager;
 import com.projectlibre1.util.Environment;
 import java.awt.Frame;
+import java.util.Map;
 
 import org.apache.commons.collections.Closure;
 
@@ -86,7 +87,7 @@ public class EclipseMain
         Environment.setStandAlone(true);
         Environment.setNewLook(false);
         Environment.setPlugin(true);
-        java.util.HashMap hashmap = ApplicationStartupFactory.extractOpts(as);
+        Map<String, Object> hashmap = ApplicationStartupFactory.extractOpts(as);
         if (updateViewClosure!=null) hashmap.put("updateViewClosure", updateViewClosure);
         ApplicationStartupFactory applicationstartupfactory = new ApplicationStartupFactory(hashmap);
         return applicationstartupfactory.instanceFromNewSession(frame, true);

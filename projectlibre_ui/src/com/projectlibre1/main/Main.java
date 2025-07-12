@@ -10,6 +10,7 @@ import com.projectlibre1.strings.Messages;
 import com.projectlibre1.util.Environment;
 
 public class Main {
+
 	public static void main(String[] args) {
 		int runNumber = getStoredRunNumber() + 1;
 		long firstRun = getStoredRunNumber();
@@ -19,31 +20,7 @@ public class Main {
 		
 		Environment.setStandAlone(true);
 
-		// TODO Extract to a function
-		String[] formatedArgs;
-		if (args!=null && args.length>0){
-			ArrayList<String> nonEmptyArgs=new ArrayList<>(args.length);
-            for (String arg : args) {
-                if (arg != null && !arg.isEmpty()) nonEmptyArgs.add(arg);
-            }
-			if (!nonEmptyArgs.isEmpty()){
-				ArrayList<String> formatedList=new ArrayList<>();
-				String s1,s2;
-				for (Iterator<String> i=nonEmptyArgs.iterator();i.hasNext();){
-					s1=i.next();
-					if (i.hasNext()){
-						s2=i.next();
-					}else{
-						s2=s1;
-						s1="--fileNames";
-					}
-					formatedList.add(s1);
-					formatedList.add(s2);
-				}
-				formatedArgs=formatedList.toArray(new String[]{});
-			} else formatedArgs=args;
-		} else formatedArgs=args;
-
+		String[] formatedArgs = getFormatedArgs(args);
 		com.projectlibre1.pm.graphic.gantt.Main.main(formatedArgs);
 	}
 
@@ -86,6 +63,36 @@ public class Main {
 				getStoredRunNumber(),
 				new Date(getStoredFirstRun())
 		);
+	}
+
+	// TODO: Refatorar função
+	public static String[] getFormatedArgs(String[] args) {
+		String[] formatedArgs;
+
+		if (args!=null && args.length>0){
+			ArrayList<String> nonEmptyArgs=new ArrayList<>(args.length);
+			for (String arg : args) {
+				if (arg != null && !arg.isEmpty()) nonEmptyArgs.add(arg);
+			}
+			if (!nonEmptyArgs.isEmpty()){
+				ArrayList<String> formatedList=new ArrayList<>();
+				String s1,s2;
+				for (Iterator<String> i=nonEmptyArgs.iterator();i.hasNext();){
+					s1=i.next();
+					if (i.hasNext()){
+						s2=i.next();
+					}else{
+						s2=s1;
+						s1="--fileNames";
+					}
+					formatedList.add(s1);
+					formatedList.add(s2);
+				}
+				formatedArgs=formatedList.toArray(new String[]{});
+			} else formatedArgs=args;
+		} else formatedArgs=args;
+
+		return formatedArgs;
 	}
 
 }

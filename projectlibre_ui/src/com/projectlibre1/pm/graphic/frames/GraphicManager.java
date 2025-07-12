@@ -627,7 +627,7 @@ public class GraphicManager implements  FrameHolder, NamedFrameListener, WindowS
 		if (form==null) return false;
 		else return doNewProjectDialog2(form);
 	}
-	public boolean doNewProjectNoDialog(HashMap opts) {
+	public boolean doNewProjectNoDialog(Map<String, Object> opts) {
 		ProjectDialog.Form form=doNewProjectNoDialog1();
 		if (form==null) return false;
 		if (opts!=null){

@@ -96,19 +96,15 @@ import com.projectlibre1.util.VersionUtils;
 public abstract class StartupFactory {
 	public static final String defaultServerUrl = Settings.SITE_HOME;
 	private static final int NUM_INVALID_LOGINS = 3;
-
-
 	protected String serverUrl=null;
 	protected String[] projectUrls=null;
 	protected String login=null;
 	protected String password=null;
 	protected Map credentials=new HashMap();
 	protected long projectId;
-	protected HashMap opts=null;
+	protected Map<String, Object> opts=null;
 
-	protected StartupFactory() {
-//		System.out.println("---------- StartupFactory");
-	}
+	protected StartupFactory() {}
 
 	/**
 	 * Used to test restoring of workspace to simulate applet restart
@@ -121,37 +117,27 @@ public abstract class StartupFactory {
 		old.cleanUp();
 		con.getContentPane().removeAll();
 		GraphicManager g = instanceFromExistingSession((Container) con);
-//		g.decodeWorkspace();
-
-//		System.out.println("restarted");
 		return g;
 	}
 
 	public GraphicManager instanceFromExistingSession(Container container) {
-
-
-		System.gc(); // hope to avoid out of memory problems
+		// hope to avoid out of memory problems
+		System.gc();
 
 		DebugUtils.isMemoryOk(true);
 
-
 		long t=System.currentTimeMillis();
-//		System.out.println("---------- StartupFactory instanceFromExistingSession#1");
 		final GraphicManager graphicManager = new GraphicManager(container);
 		graphicManager.setStartupFactory(this);
 		SessionFactory.getInstance().setJobQueue(graphicManager.getJobQueue());
-		//if (Environment.isNewLook())
-			graphicManager.initLookAndFeel();
-//		System.out.println("---------- StartupFactory instanceFromExistingSession#1 done in "+(System.currentTimeMillis()-t)+" ms");
+
+		graphicManager.initLookAndFeel();
 		SwingUtilities.invokeLater(new Runnable() {
 
 			public void run() {
 				long t=System.currentTimeMillis();
-//				System.out.println("---------- StartupFactory instanceFromExistingSession#2");
 				graphicManager.initView();
-//				System.out.println("---------- StartupFactory instanceFromExistingSession#2 done in "+(System.currentTimeMillis()-t)+" ms");
 			}});
-//		graphicManager.invalidate();
 		return graphicManager;
 	}
 
@@ -417,6 +403,7 @@ public abstract class StartupFactory {
 	protected abstract void abort();
 	protected void getCredentials() {
 	}
+
 	public void doStartupAction(final GraphicManager gm, final long projectId, final String[] projectUrls, final boolean welcome, boolean readOnly) {
 		if (Environment.isClientSide()) {
 			if (projectId > 0) {
@@ -446,7 +433,7 @@ public abstract class StartupFactory {
 						if (Environment.isProjectLibre()&&!Environment.isPlugin()) {
 							LicenseDialog.showDialog(gm.getFrame(),false);
 							UserInfoDialog.showDialog(gm.getFrame(),false);
-//							DonateDialog.maybeShow(gm.getFrame(),false);
+							// DonateDialog.maybeShow(gm.getFrame(),false);
 							UpdateChecker.checkForUpdateInBackground();
 						}
 						if (welcome&&!Environment.isPlugin()) {
